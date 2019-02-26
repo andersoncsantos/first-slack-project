@@ -30,7 +30,7 @@ module.exports = function(controller) {
 
             // user object can contain arbitary keys. we will store tasks in .tasks
             if (!user || !user.tasks || user.tasks.length == 0) {
-                bot.reply(message, 'There are no tasks on your list. Say `add _task_` to add something.');
+                bot.reply(message, 'Não há tarefas em sua lista. Digite: `add _tarefa_` para adicionar algo.');
             } else {
 
                 var text = 'Here are your current tasks: \n' +
