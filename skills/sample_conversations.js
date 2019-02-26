@@ -29,20 +29,7 @@ module.exports = function(controller) {
   controller.hears(['mario'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.startConversation(message, function(err, convo) {
-            convo.say({"attachments":[{
-                                                          "type": "actions",
-                                                          "elements": [
-                                                            {
-                                                              "type": "button",
-                                                              "text": {
-                                                                "type": "plain_text",
-                                                                "text": "Button",
-                                                                "emoji": true
-                                                              },
-                                                              "value": "click_me_123"
-                                                            }
-                                                          ]
-                                                        }]});
+            convo.say('Mário teretetê?');
 
             convo.ask('Boca na minhoca', function(response, convo) {
               
