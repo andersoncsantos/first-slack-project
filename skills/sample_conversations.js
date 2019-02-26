@@ -31,8 +31,23 @@ module.exports = function(controller) {
         bot.startConversation(message, function(err, convo) {
             convo.say('This is an example of using convo.ask with a single callback.');
 
-            convo.ask('What is a button?', function(response, convo) {
-
+            convo.ask(["attachments":
+	{
+		"type": "actions",
+		"elements": [
+			{
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Button",
+					"emoji": true
+				},
+				"value": "click_me_123"
+			}
+		]
+	}
+], function(response, convo) {
+              
                 convo.say('Cool, I like ' + response.text + ' too!');
                 convo.next();
 
