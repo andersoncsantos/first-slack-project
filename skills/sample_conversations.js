@@ -26,27 +26,25 @@ module.exports = function(controller) {
 
     });
   
-  controller.hears(['button'], 'direct_message,direct_mention', function(bot, message) {
+  controller.hears(['mario'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.startConversation(message, function(err, convo) {
-            convo.say('This is an example of using convo.ask with a single callback.');
+            convo.say({"attachments":[{
+                                                          "type": "actions",
+                                                          "elements": [
+                                                            {
+                                                              "type": "button",
+                                                              "text": {
+                                                                "type": "plain_text",
+                                                                "text": "Button",
+                                                                "emoji": true
+                                                              },
+                                                              "value": "click_me_123"
+                                                            }
+                                                          ]
+                                                        }]});
 
-            convo.ask(["attachments":
-	{
-		"type": "actions",
-		"elements": [
-			{
-				"type": "button",
-				"text": {
-					"type": "plain_text",
-					"text": "Button",
-					"emoji": true
-				},
-				"value": "click_me_123"
-			}
-		]
-	}
-], function(response, convo) {
+            convo.ask('Boca na minhoca', function(response, convo) {
               
                 convo.say('Cool, I like ' + response.text + ' too!');
                 convo.next();
