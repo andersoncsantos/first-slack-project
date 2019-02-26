@@ -30,35 +30,35 @@ module.exports = function(controller) {
 
         bot.startConversation(message, function(err, convo) {
             //convo.say('calendário?');
-            convo.ask('legal', function(response, convo) {
-              
-                convo.say('Legal, gosto de ' + response.text + ' também!');
-                convo.next();
-
-            });
           
-          bot.reply(message, {
-              attachments:[
-                {
-                  title: 'Qual cor?',
-                  callback_id: '123',
-                  attachment_type: 'default',
-                  actions: [
-                     {
-                        "name":'amarelo',
-                        "text": 'Amarelo',
-                        "value": 'Amarelo',
-                        "type": 'button',
-                     },
-                     {
-                         "name":'azul',
-                         "text": 'Azul',
-                         "value": 'azul',
-                         "type": 'button',
-                     }
-                  ]
-                }
-              ]
+        bot.reply(message, {
+                attachments:[
+                  {
+                    title: 'Qual cor?',
+                    callback_id: '123',
+                    attachment_type: 'default',
+                    actions: [
+                       {
+                          "name":'amarelo',
+                          "text": 'Amarelo',
+                          "value": 'Amarelo',
+                          "type": 'button',
+                       },
+                       {
+                           "name":'azul',
+                           "text": 'Azul',
+                           "value": 'azul',
+                           "type": 'button',
+                       }
+                    ]
+                  }
+                ]
+              });
+          
+            convo.ask('ok', function(response, convo) {
+              
+                    convo.say('Legal, gosto de *' + response.text + '* também!');
+                    convo.next();
             });
         });
 
