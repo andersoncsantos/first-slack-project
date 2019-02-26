@@ -23,30 +23,6 @@ module.exports = function(controller) {
 
             });
         });
-      
-      bot.reply(message, {
-      attachments:[
-        {
-          title: 'Do you want to interact with my buttons?',
-          callback_id: '123',
-          attachment_type: 'default',
-          actions: [
-             {
-                "name":'yes',
-                "text": 'Yes',
-                "value": 'yes',
-                "type": 'button',
-             },
-             {
-                 "name":'no',
-                 "text": 'No',
-                 "value": 'no',
-                 "type": 'button',
-             }
-          ]
-        }
-      ]
-    });
 
     });
   
@@ -59,6 +35,30 @@ module.exports = function(controller) {
                 convo.say('Cool, I like ' + response.text + ' too!');
                 convo.next();
 
+            });
+          
+          bot.reply(message, {
+              attachments:[
+                {
+                  title: 'Do you want to interact with my buttons?',
+                  callback_id: '123',
+                  attachment_type: 'default',
+                  actions: [
+                     {
+                        "name":'yes',
+                        "text": 'Yes',
+                        "value": 'yes',
+                        "type": 'button',
+                     },
+                     {
+                         "name":'no',
+                         "text": 'No',
+                         "value": 'no',
+                         "type": 'button',
+                     }
+                  ]
+                }
+              ]
             });
         });
 
