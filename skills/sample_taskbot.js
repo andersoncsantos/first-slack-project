@@ -66,7 +66,7 @@ module.exports = function(controller) {
                     bot.reply(message, 'Ocorreu um erro ao adicionar sua tarefa: ' + err);
                 } else {
                     bot.api.reactions.add({
-                        name: 'thumbsup',
+                        name: 'thumbsup::skin-tone-3',
                         channel: message.channel,
                         timestamp: message.ts
                     });
