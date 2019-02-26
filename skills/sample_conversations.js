@@ -27,17 +27,8 @@ module.exports = function(controller) {
     });
   
   controller.hears(['cor'], 'direct_message,direct_mention', function(bot, message) {
-
-        bot.startConversation(message, function(response, convo) {
-            //convo.say('calendário?');
-          
-          convo.ask('Esco', function(response, convo) {
-              
-                    convo.say('Legal, gosto de *' + response.text + '* também!');
-                    convo.next();
-            });
-          
-        bot.reply(message, {
+        
+    bot.reply(message, {
                 attachments:[
                   {
                     title: 'Qual cor?',
@@ -60,8 +51,15 @@ module.exports = function(controller) {
                   }
                 ]
               });
-          
-            
+
+        bot.startConversation(message, function(response, convo) {
+            //convo.say('calendário?');
+  
+            convo.ask('Escolha uma das opções', function(response, convo) {
+
+                      convo.say('Legal, gosto de *' + response.text + '* também!');
+                      convo.next();
+              });
         });
 
     });
