@@ -28,8 +28,14 @@ module.exports = function(controller) {
   
   controller.hears(['cor'], 'direct_message,direct_mention', function(bot, message) {
 
-        bot.startConversation(message, function(err, convo) {
+        bot.startConversation(message, function(response, convo) {
             //convo.say('calendário?');
+          
+          convo.ask('Esco', function(response, convo) {
+              
+                    convo.say('Legal, gosto de *' + response.text + '* também!');
+                    convo.next();
+            });
           
         bot.reply(message, {
                 attachments:[
@@ -55,11 +61,7 @@ module.exports = function(controller) {
                 ]
               });
           
-            convo.ask('ok', function(response, convo) {
-              
-                    convo.say('Legal, gosto de *' + response.text + '* também!');
-                    convo.next();
-            });
+            
         });
 
     });
