@@ -30,7 +30,7 @@ module.exports = function(controller) {
 
         bot.startConversation(message, function(err, convo) {
             convo.say('calendário?');
-            convo.ask('', function(response, convo) {
+            convo.ask('legal', function(response, convo) {
               
                 convo.say('Cool, I like ' + response.text + ' too!');
                 convo.next();
