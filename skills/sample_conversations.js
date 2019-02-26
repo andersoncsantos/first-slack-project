@@ -23,6 +23,30 @@ module.exports = function(controller) {
 
             });
         });
+      
+      bot.reply(message, {
+      attachments:[
+        {
+          title: 'Do you want to interact with my buttons?',
+          callback_id: '123',
+          attachment_type: 'default',
+          actions: [
+             {
+                "name":'yes',
+                "text": 'Yes',
+                "value": 'yes',
+                "type": 'button',
+             },
+             {
+                 "name":'no',
+                 "text": 'No',
+                 "value": 'no',
+                 "type": 'button',
+             }
+          ]
+        }
+      ]
+    });
 
     });
   
@@ -30,7 +54,6 @@ module.exports = function(controller) {
 
         bot.startConversation(message, function(err, convo) {
             convo.say('Mário teretetê?');
-
             convo.ask('Boca na minhoca', function(response, convo) {
               
                 convo.say('Cool, I like ' + response.text + ' too!');
