@@ -26,11 +26,11 @@ module.exports = function(controller) {
 
     });
   
-  controller.hears(['mario'], 'direct_message,direct_mention', function(bot, message) {
+  controller.hears(['date'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.startConversation(message, function(err, convo) {
-            convo.say('Mário teretetê?');
-            convo.ask('Boca na minhoca', function(response, convo) {
+            convo.say('calendário?');
+            convo.ask('', function(response, convo) {
               
                 convo.say('Cool, I like ' + response.text + ' too!');
                 convo.next();
