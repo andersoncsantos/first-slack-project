@@ -26,13 +26,13 @@ module.exports = function(controller) {
 
     });
   
-  controller.hears(['date'], 'direct_message,direct_mention', function(bot, message) {
+  controller.hears(['cor'], 'direct_message,direct_mention', function(bot, message) {
 
         bot.startConversation(message, function(err, convo) {
-            convo.say('calendário?');
+            //convo.say('calendário?');
             convo.ask('legal', function(response, convo) {
               
-                convo.say('Cool, I like ' + response.text + ' too!');
+                convo.say('Legal, gosto de ' + response.text + ' também!');
                 convo.next();
 
             });
@@ -40,20 +40,20 @@ module.exports = function(controller) {
           bot.reply(message, {
               attachments:[
                 {
-                  title: 'Do you want to interact with my buttons?',
+                  title: 'Qual cor?',
                   callback_id: '123',
                   attachment_type: 'default',
                   actions: [
                      {
-                        "name":'yes',
-                        "text": 'Yes',
-                        "value": 'yes',
+                        "name":'amarelo',
+                        "text": 'Amarelo',
+                        "value": 'Amarelo',
                         "type": 'button',
                      },
                      {
-                         "name":'no',
-                         "text": 'No',
-                         "value": 'no',
+                         "name":'azul',
+                         "text": 'Azul',
+                         "value": 'azul',
                          "type": 'button',
                      }
                   ]
