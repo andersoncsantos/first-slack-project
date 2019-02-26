@@ -33,7 +33,7 @@ module.exports = function(controller) {
                 bot.reply(message, 'Não há tarefas em sua lista. Digite: `add _tarefa_` para adicionar algo.');
             } else {
 
-                var text = 'Aqui está a lista de tarefas: \n' +
+                var text = 'Aqui está sua lista de tarefas: \n' +
                     generateTaskList(user) +
                     'Digite: `done _número da tarefa_` para marcar como completada.';
 
@@ -98,7 +98,7 @@ module.exports = function(controller) {
                 }
 
                 if (number < 0 || number >= user.tasks.length) {
-                    bot.reply(message, 'Desculpe, esse número não existe na lista. No momento existe ' + user.tasks.length + ' items na sua lista.');
+                    bot.reply(message, 'Desculpe, esse número não existe na lista. No momento existem apenas ' + user.tasks.length + ' items na sua lista.');
                 } else {
 
                     var item = user.tasks.splice(number,1);
@@ -107,9 +107,9 @@ module.exports = function(controller) {
                     bot.reply(message, '~' + item + '~');
 
                     if (user.tasks.length > 0) {
-                        bot.reply(message, 'Ainda existe tarefas na sua lista:\n' + generateTaskList(user));
+                        bot.reply(message, 'Ainda existem tarefas na sua lista:\n' + generateTaskList(user));
                     } else {
-                        bot.reply(message, 'Your list is now empty!');
+                        bot.reply(message, 'Sua lista está vazia!');
                     }
                 }
             });
