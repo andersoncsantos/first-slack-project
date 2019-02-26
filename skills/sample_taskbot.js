@@ -33,9 +33,9 @@ module.exports = function(controller) {
                 bot.reply(message, 'Não há tarefas em sua lista. Digite: `add _tarefa_` para adicionar algo.');
             } else {
 
-                var text = 'Here are your current tasks: \n' +
+                var text = 'Aqui está a lista de tarefas: \n' +
                     generateTaskList(user) +
-                    'Reply with `done _number_` to mark a task completed.';
+                    'Digite: `done _número da tarefa_` para marcar como completada.';
 
                 bot.reply(message, text);
 
@@ -63,7 +63,7 @@ module.exports = function(controller) {
             controller.storage.users.save(user, function(err,saved) {
 
                 if (err) {
-                    bot.reply(message, 'I experienced an error adding your task: ' + err);
+                    bot.reply(message, 'Ocorreu um erro ao adicionar sua tarefa: ' + err);
                 } else {
                     bot.api.reactions.add({
                         name: 'thumbsup',
@@ -83,7 +83,7 @@ module.exports = function(controller) {
         var number = message.match[1];
 
         if (isNaN(number)) {
-            bot.reply(message, 'Please specify a number.');
+            bot.reply(message, 'Precisa ser um número');
         } else {
 
             // adjust for 0-based array index
@@ -98,7 +98,7 @@ module.exports = function(controller) {
                 }
 
                 if (number < 0 || number >= user.tasks.length) {
-                    bot.reply(message, 'Sorry, your input is out of range. Right now there are ' + user.tasks.length + ' items on your list.');
+                    bot.reply(message, 'Desculpe, esse número não existe na lista. No momento existe ' + user.tasks.length + ' items na sua lista.');
                 } else {
 
                     var item = user.tasks.splice(number,1);
@@ -107,7 +107,7 @@ module.exports = function(controller) {
                     bot.reply(message, '~' + item + '~');
 
                     if (user.tasks.length > 0) {
-                        bot.reply(message, 'Here are our remaining tasks:\n' + generateTaskList(user));
+                        bot.reply(message, 'Ainda existe tarefas na sua lista:\n' + generateTaskList(user));
                     } else {
                         bot.reply(message, 'Your list is now empty!');
                     }
