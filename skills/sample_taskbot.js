@@ -23,7 +23,7 @@ module.exports = function(controller) {
     // listen for someone saying 'tasks' to the bot
     // reply with a list of current tasks loaded from the storage system
     // based on this user's id
-    controller.hears(['tasks','todo'], 'direct_message', function(bot, message) {
+    controller.hears(['tarefas','todo'], 'direct_message', function(bot, message) {
 
         // load user from storage...
         controller.storage.users.get(message.user, function(err, user) {
